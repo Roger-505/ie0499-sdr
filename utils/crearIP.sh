@@ -2,6 +2,9 @@
 
 IP=192.168.10.1/24
 
+# Desactivar WiFi para evitar que interfiera con esta interfaz de red
+sudo nmcli radio wifi off
+
 # Find a physical Ethernet interface (not docker, veth, etc.)
 IFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -Ev '^(lo|docker|veth|br|virbr)' | while read iface; do
     if [[ -e "/sys/class/net/$iface" && $(cat "/sys/class/net/$iface/type") -eq 1 ]]; then

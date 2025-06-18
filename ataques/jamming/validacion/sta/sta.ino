@@ -8,6 +8,7 @@ const char* password = "12345678";
 // Dirección IP del AP (por defecto en modo SoftAP)
 const char* serverIP = "192.168.4.1";
 
+int i = 0;
 void setup() {
   Serial.begin(115200);
   delay(1000);
@@ -37,7 +38,9 @@ void loop() {
     if (httpCode > 0) {
       String payload = http.getString();
       Serial.println("Respuesta del servidor:");
-      Serial.println(payload);
+      Serial.print(payload);
+      Serial.print(" ");
+      Serial.println(i);
     } else {
       Serial.printf("Error en la solicitud HTTP: %s\n", http.errorToString(httpCode).c_str());
     }
@@ -46,6 +49,6 @@ void loop() {
   } else {
     Serial.println("No conectado a WiFi.");
   }
-
+  i += 1;
   delay(5000);  // Espera 5 segundos antes de la próxima solicitud
 }

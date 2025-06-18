@@ -394,7 +394,7 @@ blocks:
     clock_source6: ''
     clock_source7: ''
     comment: ''
-    dev_addr: '"addr=192.168.10.3"'
+    dev_addr: '"addr=192.168.10.2"'
     dev_args: ''
     gain0: rf_gain
     gain1: '0'

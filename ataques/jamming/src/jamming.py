@@ -89,9 +89,9 @@ class jamming(gr.top_block, Qt.QWidget):
         ##################################################
 
         # Create the options list
-        self._samp_rate_options = [100000.0, 1000000.0, 5000000.0, 10000000.0, 20000000.0]
+        self._samp_rate_options = [100000.0, 1000000.0, 5000000.0, 10000000.0, 20000000.0, 25000000.0]
         # Create the labels list
-        self._samp_rate_labels = ['100kHz', '1MHz', '5 MHz', '10 MHz', '20 MHz']
+        self._samp_rate_labels = ['100kHz', '1MHz', '5 MHz', '10 MHz', '20 MHz', '25 MHz']
         # Create the combo box
         self._samp_rate_tool_bar = Qt.QToolBar(self)
         self._samp_rate_tool_bar.addWidget(Qt.QLabel("'samp_rate'" + ": "))
@@ -136,7 +136,7 @@ class jamming(gr.top_block, Qt.QWidget):
             "",
         )
         self.uhd_usrp_sink_0.set_samp_rate(samp_rate)
-        # No synchronization enforced.
+        self.uhd_usrp_sink_0.set_time_now(uhd.time_spec(time.time()), uhd.ALL_MBOARDS)
 
         self.uhd_usrp_sink_0.set_center_freq(freq, 0)
         self.uhd_usrp_sink_0.set_antenna("TX/RX", 0)
